@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>carre rouge</title>
+		<script>
+function changer()
+{
+	var elem = document.getElementById("carre");
+	var left = 800;
+	var timer;
+	// Move the element 10px on the right every 16ms
+	timer = setInterval(function () {
+		console.log(left);
+		 pausecomp(100);
+		elem.style.left = ( left -= 10 ) + "px";
+		// clear the timer at 400px to stop the animation
+		if ( left <0 ) {
+			clearInterval( timer );
+		}
+	}, 16);
+}
+		function pausecomp(millis) 
+		{
+			var date = new Date();
+			var curDate = null;
+			do { 
+				curDate = new Date(); 
+			} while(curDate-date < millis);
+		} 
+
+		</script>
+		<style>
+			#carre {
+				position:absolute;
+				width:100px;
+				height:100px;
+				background:red;
+				left:400px;
+			}
+		</style>
+	</head>
+	<body onload="changer();">
+		<div id="carre"></div>
+	</body>
+</html>
